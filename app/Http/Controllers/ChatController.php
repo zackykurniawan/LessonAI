@@ -2,41 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ChatController extends Controller
 {
-    public function chat(Request $request)
+    public function index()
     {
-        // Ambil teks pesan dari permintaan
-        $message = $request->input('message');
-
-        // Kirim permintaan ke API OpenAI
-        $response = $this->callOpenAPI($message);
-
-        // Ambil balasan dari respon API
-        $reply = $response['choices'][0]['text'];
-
-        // Kembalikan balasan sebagai respons JSON
-        return response()->json(['reply' => $reply]);
+        return view('feature.chat');
     }
 
-    private function callOpenAPI($message)
+    public function chat(Request $request)
     {
-        $client = new Client();
+        $message = $request->input('message');
+        $response = Http::post('https://api.openai.com/v1/engines/davinci-codex/completions', [
+            'prompt' => $message,
+            'max_tokens' => 50,
+        ])->json();
 
-        $response = $client->post('https://api.openai.com/v1/engines/davinci-codex/completions', [
-            'headers' => [
-                'Authorization' => 'Bearer your-api-key',
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
-                'prompt' => $message,
-                'max_tokens' => 50,
-            ],
+        $reply = $response['choices'][0]['text'] ?? 'I am sorry, I cannot generate a reply at the moment.';
+
+        return response()->json([
+            'reply' => $reply,
         ]);
-
-        return json_decode($response->getBody(), true);
     }
 }

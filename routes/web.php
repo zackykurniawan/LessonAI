@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/chat', 'ChatController@chat');
+Route::get('/chat', [ChatController::class, 'index']);
+Route::post('/chat', [ChatController::class, 'chat']);
 
 Route::get('/', function () {
     return view('welcome');

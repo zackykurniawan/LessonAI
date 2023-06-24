@@ -74,9 +74,6 @@
                             <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="features-profile.html" class="dropdown-item has-icon">
-                                <i class="far fa-user"></i> Profile
-                            </a>
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -95,28 +92,28 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
-                        <li class="">
+                        <li class="nav-item @if(Request::is('dashboard')) active @endif">
                             <a class="nav-link" href="{{ url('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Master</li>
-                        <li class="">
+                        <li class="nav-item @if(Request::is('siswa')) active @endif">
                             <a class="nav-link" href="{{ url('siswa') }}"><i class="fas fa-user"></i>
                                 <span>Siswa</span></a>
                         </li>
-                        <li class="">
+                        <li class="nav-item @if(Request::is('jurusan')) active @endif">
                             <a class="nav-link" href="{{ url('jurusan') }}"><i class="fas fa-university"></i>
                                 <span>Jurusan</span></a>
                         </li>
-                        <li class="">
-                            <a class="nav-link" href="{{ url('pelajaran') }}"><i class="fas fa-chalkboard"></i>
-                                <span>Pelajaran</span></a>
+                        <li class="nav-item @if(Request::is('artikel')) active @endif">
+                            <a class="nav-link" href="{{ url('artikel') }}"><i class="fas fa-file"></i>
+                                <span>Artikel</span></a>
                         </li>
                         <li class="menu-header">Pages</li>
-                        <li class="">
+                        <li class="nav-item @if(Request::is('jadwal')) active @endif">
                             <a class="nav-link" href="{{ url('jadwal') }}"><i class="far fa-list-alt"></i>
-                                <span>Jadwal Pelajaran</span></a>
+                                <span>List Artikel</span></a>
                         </li>
-                        <li class="">
+                        <li class="nav-item @if(Request::is('chat')) active @endif">
                             <a class="nav-link" href="{{ url('chat') }}"><i class="fas fa-comments"></i>
                                 <span>Chat AI</span></a>
                         </li>
