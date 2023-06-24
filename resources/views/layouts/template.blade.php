@@ -29,12 +29,6 @@
         gtag('config', 'UA-94034622-3');
     </script>
     <!-- /END GA -->
-    <style>
-        .no-section .modal-dialog {
-            /* Atur gaya CSS yang diinginkan */
-        }
-    </style>
-    
 </head>
 
 <body>
@@ -97,33 +91,33 @@
                         <a href="index.html">Lesson AI</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="index.html">L-AI</a>
+                        <a href="index.html">LA</a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
                         <li class="">
-                            <a href="#" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                            <a class="nav-link" href="{{ url('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Master</li>
                         <li class="">
-                            <a class="nav-link" href="blank.html"><i class="fas fa-user"></i>
+                            <a class="nav-link" href="{{ url('siswa') }}"><i class="fas fa-user"></i>
                                 <span>Siswa</span></a>
                         </li>
                         <li class="">
-                            <a class="nav-link" href="blank.html"><i class="fas fa-university"></i>
+                            <a class="nav-link" href="{{ url('jurusan') }}"><i class="fas fa-university"></i>
                                 <span>Jurusan</span></a>
                         </li>
                         <li class="">
-                            <a class="nav-link" href="blank.html"><i class="fas fa-chalkboard"></i>
+                            <a class="nav-link" href="{{ url('pelajaran') }}"><i class="fas fa-chalkboard"></i>
                                 <span>Pelajaran</span></a>
                         </li>
                         <li class="menu-header">Pages</li>
                         <li class="">
-                            <a class="nav-link" href="blank.html"><i class="far fa-list-alt"></i>
+                            <a class="nav-link" href="{{ url('jadwal') }}"><i class="far fa-list-alt"></i>
                                 <span>Jadwal Pelajaran</span></a>
                         </li>
                         <li class="">
-                            <a class="nav-link" href="blank.html"><i class="fas fa-comments"></i>
+                            <a class="nav-link" href="{{ url('chat') }}"><i class="fas fa-comments"></i>
                                 <span>Chat AI</span></a>
                         </li>
                     </ul>

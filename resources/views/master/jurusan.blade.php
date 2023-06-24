@@ -6,8 +6,8 @@
             <div class="section-header">
                 <h1>Jurusan</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="dashboard">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Master</a></div>
+                    <div class="breadcrumb-item active"><a href="{{ url('dashboard') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item"><a href="{{ url('jurusan') }}">Master</a></div>
                     <div class="breadcrumb-item">Jurusan</div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
-                                                            <div class="form-group">
+                                                            <div class="form-group mb-2">
                                                                 <label>Nama Jurusan</label>
                                                                 <div class="input-group">
                                                                     <input type="text" class="form-control"
@@ -99,7 +99,7 @@
                     <form action="{{ route('jurusan.store') }}" method="POST">
                         <div class="modal-body">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label>Nama Jurusan</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Nama Jurusan" name="nama">

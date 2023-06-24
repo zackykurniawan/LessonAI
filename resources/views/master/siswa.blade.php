@@ -6,8 +6,8 @@
             <div class="section-header">
                 <h1>Siswa</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="dashboard">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Master</a></div>
+                    <div class="breadcrumb-item active"><a href="{{ url('dashboard') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item"><a href="{{ url('siswa') }}">Master</a></div>
                     <div class="breadcrumb-item">Siswa</div>
                 </div>
             </div>
@@ -46,6 +46,8 @@
                                             <td>{{ $item->kelas }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             <td>{{ $item->jurusan->nama }}</td>
+                                            <td><img src="{{ asset('storage/' . $item->foto) }}" width="200px"
+                                                    alt="" srcset=""></td>
                                             <td>
                                                 <a class="btn btn-icon btn-success" data-toggle="modal"
                                                     data-target="#editData{{ $item->id }}"><i
@@ -66,16 +68,61 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form action="{{ route('siswa.update', $item->id) }}" method="POST">
+                                                    <form action="{{ route('siswa.update', $item->id) }}" method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
-                                                            <div class="form-group">
+                                                            <div class="form-group mb-2">
+                                                                <label>NIS</label>
+                                                                <div class="input-group">
+                                                                    <input type="number" class="form-control"
+                                                                        value="{{ $item->nis }}" name="nis">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-2">
                                                                 <label>Nama Siswa</label>
                                                                 <div class="input-group">
                                                                     <input type="text" class="form-control"
                                                                         value="{{ $item->nama }}" name="nama">
                                                                 </div>
+                                                            </div>
+                                                            <div class="form-group mb-2">
+                                                                <label>Kelas</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ $item->kelas }}" name="kelas">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-2">
+                                                                <label>Alamat</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ $item->alamat }}" name="alamat">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-2">
+                                                                <label>Jurusan</label>
+                                                                <div class="input-group">
+                                                                    <select name="jurusan_id" class="form-control"
+                                                                        id="">
+                                                                        @foreach ($jurusan as $data)
+                                                                            <option value="{{ $data->id }}">
+                                                                                {{ $data->nama }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-2">
+                                                                <label>Foto</label>
+                                                                <div class="input-group">
+                                                                    <input type="file" class="form-control"
+                                                                        name="foto">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-2">
+                                                                <img src="{{ asset('storage/' . $item->foto) }}"
+                                                                    width="300px" alt="" srcset="">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer bg-whitesmoke br">
@@ -105,42 +152,47 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('siswa.store') }}" method="POST">
+                    <form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label>NIS</label>
                                 <div class="input-group">
                                     <input type="number" class="form-control" placeholder="NIS" name="nis">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label>Nama</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Nama" name="nama">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label>Kelas</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Kelas" name="kelas">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label>Alamat</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Alamat" name="alamat">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label>Jurusan</label>
                                 <div class="input-group">
-                                    <select name="jurusan_id" class="form-select" id="">
+                                    <select name="jurusan_id" class="form-control" id="">
                                         @foreach ($jurusan as $data)
-                                            <option value="{{ $data->id }}" @selected($data->id == $item->jurusan_id)>
-                                                {{ $data->nama }}</option>
+                                            <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label>Foto</label>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" name="foto">
                                 </div>
                             </div>
                         </div>

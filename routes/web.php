@@ -38,8 +38,8 @@ Route::get('lupa', function () {
     return view('auth.passwords.reset2');
 });
 
-Route::get('ex', function () {
-    return view('example');
+Route::get('dashboard', function () {
+    return view('dashboard');
 });
 
 Auth::routes();
