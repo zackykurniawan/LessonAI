@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jurusan;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -14,17 +16,10 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        // Menampilkan data siswa
+        $siswa = Siswa::all();
+        $kategori = Jurusan::all();
+        return view('master.siswa', compact('siswa', 'jurusan'));
     }
 
     /**
@@ -35,30 +30,14 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Menambah data siswa
+        $data = $request->all();
+        $files = $request->file('foto')->store('siswa/foto');
+        $data['foto'] = $files;
+        Siswa::create($data);
+        return redirect('siswa')->with('success', 'Siswa Berhasil Ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Siswa  $siswa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Siswa $siswa)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Siswa  $siswa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Siswa $siswa)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +48,18 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
-        //
+        // Mengedit data siswa
+        $data = $request->all();
+        if ($request->hasFile('foto')) {
+            $files = $request->file('foto')->store('siswa/foto');
+            Storage::delete($siswa->foto);
+            $data['foto'] = $files;
+            $siswa->update($data);
+        } else {
+            $data['foto'] = $siswa->foto;
+            $siswa->update($data);
+        }
+        return redirect('siswa')->with('success', 'Siswa Berhasil Diubah');
     }
 
     /**
@@ -80,6 +70,9 @@ class SiswaController extends Controller
      */
     public function destroy(Siswa $siswa)
     {
-        //
+        // Menghapus data siswa
+        Storage::delete($siswa->foto);
+        $siswa->delete();
+        return redirect('siswa')->with('success', 'Siswa Berhasil Dihapus');
     }
 }

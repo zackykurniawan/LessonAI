@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\SiswaController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +23,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::middleware(['auth'])->group(function () {
+
+// Route Halaman Jurusan
+Route::resource('jurusan', JurusanController::class);
+Route::get('jurusan/{jurusan}', [JurusanController::class, 'destroy']);
+
+// Route Halaman Siswa
+Route::resource('siswa', SiswaController::class);
+Route::get('siswa/{siswa}', [SiswaController::class, 'destroy']);
+    
+// });

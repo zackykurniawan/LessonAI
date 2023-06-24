@@ -14,17 +14,9 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        // Menampilkan data jurusan
+        $jurusan = Jurusan::all();
+        return view('master.jurusan', compact('jurusan'));
     }
 
     /**
@@ -35,29 +27,10 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Jurusan  $jurusan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Jurusan $jurusan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Jurusan  $jurusan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Jurusan $jurusan)
-    {
-        //
+        // Menambah data jurusan
+        $jurusan = $request->all();
+        Jurusan::create($jurusan);
+        return redirect('jurusan')->with('success', 'Jurusan Berhasil Ditambahkan');
     }
 
     /**
@@ -69,7 +42,10 @@ class JurusanController extends Controller
      */
     public function update(Request $request, Jurusan $jurusan)
     {
-        //
+        // Mengedit data jurusan
+        $data = $request->all();
+        $jurusan->update($data);
+        return redirect('jurusan')->with('success', 'Jurusan Berhasil Diubah');
     }
 
     /**
@@ -80,6 +56,8 @@ class JurusanController extends Controller
      */
     public function destroy(Jurusan $jurusan)
     {
-        //
+        // Menghapus data jurusan
+        $jurusan->delete();
+        return redirect('jurusan')->with('success', 'Jurusan Berhasil Dihapus');
     }
 }
