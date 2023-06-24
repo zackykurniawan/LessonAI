@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($menu as $item)
+                                @foreach ($siswa as $item)
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
                                         <td>{{ $item->nis }}</td>
@@ -35,7 +35,7 @@
                                         <td><img src="{{ asset('storage/'. $item->foto) }}" width="200px" alt="" srcset=""></td>
                                         <td>
                                             <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editdata{{ $item->id }}">Edit</a>
-                                            <a href="menu/{{ $item->id }}" class="btn btn-danger">Hapus</a>
+                                            <a href="siswa/{{ $item->id }}" class="btn btn-danger">Hapus</a>
                                         </td>
                                     </tr>
                                     <!-- Modal -->
@@ -47,12 +47,12 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ route('menu.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('siswa.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="form-group mb-3">
                                                             <label for="">NIS</label>
-                                                            <input type="text" class="form-control" value="{{ $item->nama }}" name="nama">
+                                                            <input type="text" class="form-control" value="{{ $item->nis }}" name="nis">
                                                         </div>
                                                         <div class="form-group mb-3">
                                                             <label for="">Nama</label>
@@ -60,15 +60,15 @@
                                                         </div>
                                                         <div class="form-group mb-3">
                                                             <label for="">Kelas</label>
-                                                            <input type="number" class="form-control" value="{{ $item->harga }}" name="harga">
+                                                            <input type="number" class="form-control" value="{{ $item->kelas }}" name="kelas">
                                                         </div>
                                                         <div class="form-group mb-3">
                                                             <label for="">Alamat</label>
-                                                            <input type="text" class="form-control" value="{{ $item->keterangan }}" name="keterangan">
+                                                            <input type="text" class="form-control" value="{{ $item->alamat }}" name="alamat">
                                                         </div>
                                                         <div class="form-group mb-3">
                                                             <label for="">Jurusan</label>
-                                                            <select name="category_id" class="form-select" id="">
+                                                            <select name="jurusan_id" class="form-select" id="">
                                                                 @foreach ($jurusan as $data)
                                                                     <option value="{{ $data->id }}" @selected($data->id == $item->jurusan_id)>{{ $data->nama }}</option>
                                                                 @endforeach
@@ -111,11 +111,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
                             <label for="">NIS</label>
-                            <input type="text" class="form-control" name="nama">
+                            <input type="text" class="form-control" name="nis">
                         </div>
                         <div class="form-group mb-3">
                             <label for="">Nama </label>
@@ -131,7 +131,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="">Jurusan</label>
-                            <select name="category_id" class="form-select" id="">
+                            <select name="jurusan_id" class="form-select" id="">
                                 @foreach ($jurusan as $data)
                                     <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                 @endforeach

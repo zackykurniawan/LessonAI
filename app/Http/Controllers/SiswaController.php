@@ -18,7 +18,7 @@ class SiswaController extends Controller
     {
         // Menampilkan data siswa
         $siswa = Siswa::all();
-        $kategori = Jurusan::all();
+        $jurusan = Jurusan::all();
         return view('master.siswa', compact('siswa', 'jurusan'));
     }
 
