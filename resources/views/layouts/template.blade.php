@@ -124,19 +124,11 @@
             </div>
 
             <!-- Main Content -->
-            <div class="main-content">
-                <section class="section">
-                    <div class="section-header">
-                        <h1>Blank Page</h1>
-                    </div>
+            @yield('content')
 
-                    <div class="section-body">
-                    </div>
-                </section>
-            </div>
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2023 LessonAI
+                    Copyright &copy; LessonAI 2023
                 </div>
                 <div class="footer-right">
 

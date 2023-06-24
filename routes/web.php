@@ -24,6 +24,22 @@ Route::get('template', function () {
     return view('layouts.template');
 });
 
+Route::get('form-login', function () {
+    return view('auth.login2');
+});
+
+Route::get('form-register', function () {
+    return view('auth.register2');
+});
+
+Route::get('lupa', function () {
+    return view('auth.passwords.reset2');
+});
+
+Route::get('ex', function () {
+    return view('example');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
