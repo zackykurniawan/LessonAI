@@ -1,89 +1,119 @@
-@extends('layouts.app')
+@extends('layouts.template')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <a href="" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambahdata">Tambah
-                    Jurusan</a>
-                <div class="card">
-                    <div class="card-header">Data Jurusan</div>
-
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Jurusan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($jurusan as $item)
+    <div class="main-content">
+        <section class="section">
+            <div class="section-header">
+                <h1>Jurusan</h1>
+                <div class="section-header-breadcrumb">
+                    <div class="breadcrumb-item active"><a href="dashboard">Dashboard</a></div>
+                    <div class="breadcrumb-item"><a href="#">Master</a></div>
+                    <div class="breadcrumb-item">Jurusan</div>
+                </div>
+            </div>
+        </section>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Data Jurusan</h4>
+                            <div class="card-header-action">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#tambahData">
+                                    Tambah Jurusan</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <th>{{ $loop->iteration }}</th>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>
-                                            <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editdata{{ $item->id }}">Edit</a>
-                                            <a href="jurusan/{{ $item->id }}" class="btn btn-danger">Hapus</a>
-                                        </td>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama Jurusan</th>
+                                        <th scope="col">Aksi</th>
                                     </tr>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="editdata{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Jurusan</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
+                                </thead>
+                                <tbody>
+                                    @foreach ($jurusan as $item)
+                                        <tr>
+                                            <th>{{ $loop->iteration }}</th>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>
+                                                <a class="btn btn-icon btn-success" data-toggle="modal"
+                                                    data-target="#editData{{ $item->id }}"><i
+                                                        class="fas fa-edit"></i></a>
+                                                <a href="jurusan/{{ $item->id }}" class="btn btn-icon btn-danger"><i
+                                                        class="fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <!-- Modal Edit Data -->
+                                        <div class="modal fade no-section" tabindex="-1" id="editData{{ $item->id }}"
+                                            non>
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit Jurusan</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
                                                     <form action="{{ route('jurusan.update', $item->id) }}" method="POST">
                                                         @csrf
                                                         @method('PUT')
-                                                        <div class="form-group mb-3">
-                                                            <label for="">Nama Jurusan</label>
-                                                            <input type="text" class="form-control" value="{{ $item->nama }}" name="nama">
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label>Nama Jurusan</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control"
+                                                                        value="{{ $item->nama }}" name="nama">
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                                    </div>
-                                                </form>
+                                                        <div class="modal-footer bg-whitesmoke br">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Keluar</button>
+                                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="tambahdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Jurusan</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('jurusan.store') }}" method="POST">
-                        @csrf
-                        <div class="form-group mb-3">
-                            <label for="">Nama Jurusan</label>
-                            <input type="text" class="form-control" name="nama">
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
+        <!-- Modal Tambah Data -->
+        <div class="modal fade" tabindex="-1" id="tambahData">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambah Jurusan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{{ route('jurusan.store') }}" method="POST">
+                        <div class="modal-body">
+                            @csrf
+                            <div class="form-group">
+                                <label>Nama Jurusan</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Nama Jurusan" name="nama">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer bg-whitesmoke br">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection

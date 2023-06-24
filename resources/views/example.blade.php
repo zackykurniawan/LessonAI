@@ -40,34 +40,13 @@
                                             <th>1</th>
                                             <td>2</td>
                                             <td>
-                                                <a class="btn btn-icon btn-success" data-toggle="modal" data-target="#editData"><i
-                                                        class="far fa-user"></i></a>
+                                                <a class="btn btn-icon btn-success" data-toggle="modal"
+                                                    data-target="#editData"><i class="fas fa-edit"></i></a>
                                                 <a href="#" class="btn btn-icon btn-danger"><i
-                                                        class="far fa-user"></i></a>
+                                                        class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                        <!-- Modal -->
-                                        <div class="modal fade" tabindex="-1" role="dialog" id="editData">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Modal title</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Modal body text goes here.</p>
-                                                    </div>
-                                                    <div class="modal-footer bg-whitesmoke br">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -76,8 +55,33 @@
                 </div>
             </div>
         </section>
-        <!-- Modal -->
+        <!-- Modal Tambah Data -->
         <div class="modal fade" tabindex="-1" role="dialog" id="tambahData">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama Jurusan</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Email" name="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-whitesmoke br">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Edit Data -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="editData">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
     <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('assets/modules/prism/prism.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -28,6 +29,12 @@
         gtag('config', 'UA-94034622-3');
     </script>
     <!-- /END GA -->
+    <style>
+        .no-section .modal-dialog {
+            /* Atur gaya CSS yang diinginkan */
+        }
+    </style>
+    
 </head>
 
 <body>
@@ -95,7 +102,7 @@
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
                         <li class="">
-                            <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                            <a href="#" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Master</li>
                         <li class="">
@@ -147,12 +154,15 @@
     <script src="{{ asset('assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
+    <script src="{{ asset('assets/modules/prism/prism.js') }}"></script>
 
     <!-- Page Specific JS File -->
+    <script src="{{ asset('assets/js/page/bootstrap-modal.js') }}"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    
 </body>
 
 </html>

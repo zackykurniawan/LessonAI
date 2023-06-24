@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/chat', 'ChatController@chat');
+
 Route::get('/', function () {
     return view('welcome');
 });
