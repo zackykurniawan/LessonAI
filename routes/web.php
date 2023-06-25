@@ -21,19 +21,11 @@ Route::get('/chat', [ChatController::class, 'index']);
 Route::post('/chat', [ChatController::class, 'chat']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::get('template', function () {
     return view('layouts.template');
-});
-
-Route::get('form-login', function () {
-    return view('auth.login2');
-});
-
-Route::get('form-register', function () {
-    return view('auth.register2');
 });
 
 Route::get('lupa', function () {
@@ -49,6 +41,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::middleware(['auth'])->group(function () {
+
+// Route Halaman Dashboard
+Route::get('dashboard', function () {
+    return view('dashboard');
+});
 
 // Route Halaman Jurusan
 Route::resource('jurusan', JurusanController::class);

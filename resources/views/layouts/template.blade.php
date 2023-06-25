@@ -53,15 +53,15 @@
                                 Histories
                             </div>
                             <div class="search-item">
-                                <a href="#">How to hack NASA using CSS</a>
+                                <a href="#">Cara memakai fitur chat LessonAI </a>
                                 <a href="#" class="search-close"><i class="fas fa-times"></i></a>
                             </div>
                             <div class="search-item">
-                                <a href="#">Kodinger.com</a>
+                                <a href="#">LessonAI.com</a>
                                 <a href="#" class="search-close"><i class="fas fa-times"></i></a>
                             </div>
                             <div class="search-item">
-                                <a href="#">#Stisla</a>
+                                <a href="#">#Semesta2023</a>
                                 <a href="#" class="search-close"><i class="fas fa-times"></i></a>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <div class="d-sm-none d-lg-inline-block">Hi, Admin</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-divider"></div>
