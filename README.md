@@ -1,1 +1,1 @@
-LessonAI
+LessonAI - Education Life Tools & AI Automation
